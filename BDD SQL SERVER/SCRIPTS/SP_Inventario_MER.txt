@@ -1,0 +1,54 @@
+CREATE PROCEDURE sp_insert_producto
+@prod_id integer, 
+@cat_id integer,
+@prov_id integer,
+@mar_id integer,
+@prod_descripcion varchar(100),
+@prod_cantidad integer,
+@prod_precio_uni float,
+@prod_largo float,
+@prod_ancho float,
+@prod_profundidad float
+AS 
+INSERT INTO dbo.producto ([prod_id],[cat_id],[prov_id],[mar_id],[prod_descripcion],[prod_cantidad],[prod_precio_uni],[prod_largo],[prod_ancho],[prod_profundidad])
+VALUES (@prod_id, @cat_id,@prov_id,@mar_id,@prod_descripcion,@prod_cantidad,@prod_precio_uni,@prod_largo,@prod_ancho,@prod_profundidad) 
+GO;
+
+
+CREATE PROCEDURE sp_select_producto
+@prod_id integer
+AS 
+SELECT * FROM dbo.producto WHERE prod_id = @prod_id;
+GO;
+
+CREATE PROCEDURE sp_listar_producto
+AS 
+SELECT * FROM dbo.producto ;
+GO;
+
+
+CREATE PROCEDURE sp_update_producto
+@prod_id integer, 
+@cat_id integer,
+@prov_id integer,
+@mar_id integer,
+@prod_descripcion varchar(100),
+@prod_cantidad integer,
+@prod_precio_uni float,
+@prod_largo float,
+@prod_ancho float,
+@prod_profundidad float
+AS 
+UPDATE dbo.producto SET 
+[prod_id]=@prod_id,
+[cat_id]=@cat_id,
+[prov_id]=@prov_id,
+[mar_id]=@mar_id,
+[prod_descripcion]=@prod_descripcion,
+[prod_cantidad]=@prod_cantidad,
+[prod_precio_uni]=@prod_precio_uni,
+[prod_largo]=@prod_largo,
+[prod_ancho]=@prod_ancho,
+[prod_profundidad]=@prod_profundidad
+WHERE prod_id= @prod_id;
+GO
