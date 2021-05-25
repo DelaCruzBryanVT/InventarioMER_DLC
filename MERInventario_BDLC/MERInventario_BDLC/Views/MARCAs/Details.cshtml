@@ -1,0 +1,26 @@
+﻿@model MERInventario_BDLC.Models.MARCA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MARCA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MAR_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAR_NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MAR_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

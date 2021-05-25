@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e681234a830946eaa84892047962c60a" Name="Diagram1">
+        <EntityTypeShape EntityType="inventario_MERModel.CATEGORIA" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventario_MERModel.MARCA" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventario_MERModel.PRODUCTO" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventario_MERModel.PRODUCTOS_HISTORICO" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventario_MERModel.PROVEEDOR" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="inventario_MERModel.sysdiagrams" Width="1.5" PointX="8.5" PointY="4.375" IsExpanded="true" />
+        <AssociationConnector Association="inventario_MERModel.FK_PRODUCTO_CAT_PROD_CATEGORI" ManuallyRouted="false" />
+        <AssociationConnector Association="inventario_MERModel.FK_PRODUCTO_MAR_PROD_MARCA" ManuallyRouted="false" />
+        <AssociationConnector Association="inventario_MERModel.FK_PRODUCTO_PROD_HIST_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="inventario_MERModel.FK_PRODUCTO_PROV_PROD_PROVEEDO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

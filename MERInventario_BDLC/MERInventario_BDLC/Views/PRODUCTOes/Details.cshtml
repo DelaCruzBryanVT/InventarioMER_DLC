@@ -1,0 +1,89 @@
+﻿@model MERInventario_BDLC.Models.PRODUCTO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h3>Detalles Producto</h3>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Descripción:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROD_DESCRIPCION)
+        </dd>
+
+        <dt>
+            Cantidad:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROD_CANTIDAD)
+        </dd>
+
+        <dt>
+           Precio Unitario ($):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROD_PRECIO_UNI)
+        </dd>
+
+        <dt>
+          Largo (cm):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROD_LARGO)
+        </dd>
+
+		<dt>
+			Ancho (cm):
+		</dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROD_ANCHO)
+        </dd>
+
+		<dt>
+			Profunfidad (cm):
+		</dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROD_PROFUNDIDAD)
+        </dd>
+
+		<dt>
+			Categoría:
+		</dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CATEGORIA.CAT_NOMBRE)
+        </dd>
+
+        <dt>
+           Marca:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MARCA.MAR_NOMBRE)
+        </dd>
+
+        <dt>
+          Proveedor:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROVEEDOR.PROV_NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+	@Html.ActionLink("Editar", "Edit", new { id = Model.PROD_ID }, new { @class = "btn btn-info btn-large" }) |
+	@Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-warning btn-large" })
+</p>

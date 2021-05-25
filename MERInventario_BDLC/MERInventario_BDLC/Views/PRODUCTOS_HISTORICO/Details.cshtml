@@ -1,0 +1,42 @@
+﻿@model MERInventario_BDLC.Models.PRODUCTOS_HISTORICO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PRODUCTOS_HISTORICO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HIST_FECHA_MODIFICACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HIST_FECHA_MODIFICACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HIST_STOCK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HIST_STOCK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRODUCTO.PROD_DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCTO.PROD_DESCRIPCION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HIST_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

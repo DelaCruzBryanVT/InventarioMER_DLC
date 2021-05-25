@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="inventario_MERModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CATEGORIA">
+    <Key>
+      <PropertyRef Name="CAT_ID" />
+    </Key>
+    <Property Name="CAT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CAT_NOMBRE" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="MARCA">
+    <Key>
+      <PropertyRef Name="MAR_ID" />
+    </Key>
+    <Property Name="MAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MAR_NOMBRE" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="PROD_ID" />
+    </Key>
+    <Property Name="PROD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CAT_ID" Type="int" />
+    <Property Name="PROV_ID" Type="int" />
+    <Property Name="MAR_ID" Type="int" />
+    <Property Name="PROD_DESCRIPCION" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PROD_CANTIDAD" Type="bigint" Nullable="false" />
+    <Property Name="PROD_PRECIO_UNI" Type="float" Nullable="false" />
+    <Property Name="PROD_LARGO" Type="float" Nullable="false" />
+    <Property Name="PROD_ANCHO" Type="float" Nullable="false" />
+    <Property Name="PROD_PROFUNDIDAD" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRODUCTOS_HISTORICO">
+    <Key>
+      <PropertyRef Name="HIST_ID" />
+    </Key>
+    <Property Name="HIST_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PROD_ID" Type="int" />
+    <Property Name="HIST_FECHA_MODIFICACION" Type="datetime" />
+    <Property Name="HIST_STOCK" Type="bigint" />
+  </EntityType>
+  <EntityType Name="PROVEEDOR">
+    <Key>
+      <PropertyRef Name="PROV_ID" />
+    </Key>
+    <Property Name="PROV_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PROV_NOMBRE" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_PRODUCTO_CAT_PROD_CATEGORI">
+    <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="0..1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIA">
+        <PropertyRef Name="CAT_ID" />
+      </Principal>
+      <Dependent Role="PRODUCTO">
+        <PropertyRef Name="CAT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCTO_MAR_PROD_MARCA">
+    <End Role="MARCA" Type="Self.MARCA" Multiplicity="0..1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MARCA">
+        <PropertyRef Name="MAR_ID" />
+      </Principal>
+      <Dependent Role="PRODUCTO">
+        <PropertyRef Name="MAR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCTO_PROD_HIST_PRODUCTO">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="0..1" />
+    <End Role="PRODUCTOS_HISTORICO" Type="Self.PRODUCTOS_HISTORICO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="PROD_ID" />
+      </Principal>
+      <Dependent Role="PRODUCTOS_HISTORICO">
+        <PropertyRef Name="PROD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCTO_PROV_PROD_PROVEEDO">
+    <End Role="PROVEEDOR" Type="Self.PROVEEDOR" Multiplicity="0..1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVEEDOR">
+        <PropertyRef Name="PROV_ID" />
+      </Principal>
+      <Dependent Role="PRODUCTO">
+        <PropertyRef Name="PROV_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="inventario_MERModelStoreContainer">
+    <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MARCA" EntityType="Self.MARCA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTOS_HISTORICO" EntityType="Self.PRODUCTOS_HISTORICO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PRODUCTO_CAT_PROD_CATEGORI" Association="Self.FK_PRODUCTO_CAT_PROD_CATEGORI">
+      <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCTO_MAR_PROD_MARCA" Association="Self.FK_PRODUCTO_MAR_PROD_MARCA">
+      <End Role="MARCA" EntitySet="MARCA" />
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCTO_PROD_HIST_PRODUCTO" Association="Self.FK_PRODUCTO_PROD_HIST_PRODUCTO">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="PRODUCTOS_HISTORICO" EntitySet="PRODUCTOS_HISTORICO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCTO_PROV_PROD_PROVEEDO" Association="Self.FK_PRODUCTO_PROV_PROD_PROVEEDO">
+      <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

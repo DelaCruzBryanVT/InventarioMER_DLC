@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MERInventario_BDLC.Models.PRODUCTOS_HISTORICO>
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<center>
+	<h2>HISTÓRICO DE PRODUCTOS</h2>
+</center>
+<br />
+<table class="table">
+	<tr>
+		<th>
+			Fecha Modicicación
+		</th>
+		<th>
+			Stock Utilizado
+		</th>
+		<th>
+			Descripción Producto
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.HIST_FECHA_MODIFICACION)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.HIST_STOCK)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.PRODUCTO.PROD_DESCRIPCION)
+			</td>
+
+		</tr>
+	}
+
+</table>
+<hr />
+<br />
+<div>
+	@Html.ActionLink("Volver a Inventario", "../PRODUCTOes/Index", null, new { @class = "btn btn-warning btn-large" })
+</div>

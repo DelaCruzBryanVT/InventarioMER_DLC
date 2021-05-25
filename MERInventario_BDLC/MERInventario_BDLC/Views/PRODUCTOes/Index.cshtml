@@ -1,0 +1,99 @@
+﻿@model IEnumerable<MERInventario_BDLC.Models.PRODUCTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<center>
+	<h2>Listado de Productos</h2>
+</center>
+
+<p>
+	<img src="~/Icons/add.png" alt="" />
+	@Html.ActionLink("Agregar Producto", "Create",null,new { @class = "btn btn-success btn-large" })
+</p>
+<br />
+<table class="table">
+	<tr>
+		<th>
+			Descripción
+		</th>
+		<th>
+			Cantidad
+		</th>
+		<th>
+			Prec. Unitario
+		</th>
+		<th>
+			Largo (cm)
+		</th>
+		<th>
+			Ancho (cm)
+		</th>
+		<th>
+			Profundo (cm)
+		</th>
+		<th>
+			Categoria
+		</th>
+		<th>
+			Marca
+		</th>
+		<th>
+			Proveedor
+		</th>
+		<th></th>
+		<th>Acciones</th>
+		<th></th>
+	</tr>
+
+@foreach (var item in Model) {
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.PROD_DESCRIPCION)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.PROD_CANTIDAD)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.PROD_PRECIO_UNI)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.PROD_LARGO)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.PROD_ANCHO)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.PROD_PROFUNDIDAD)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.CATEGORIA.CAT_NOMBRE)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.MARCA.MAR_NOMBRE)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.PROVEEDOR.PROV_NOMBRE)
+		</td>
+		<td>
+			<img src="~/Icons/edit.png" alt="" />
+			@Html.ActionLink("Editar", "Edit", new { id = item.PROD_ID })
+		</td>
+		<td>
+			<img src="~/Icons/view.png" alt="" />
+			@Html.ActionLink("Visualizar", "Details", new { id = item.PROD_ID })
+		</td>
+		<td>
+			<img src="~/Icons/delete.png" alt="" />
+			@Html.ActionLink("Eliminar", "Delete", new { id = item.PROD_ID })
+		</td>
+	</tr>
+}
+
+</table>
+<hr />
+<br />
+<div>
+	@Html.ActionLink("Histórico de Productos", "../PRODUCTOS_HISTORICO/Index", null, new { @class = "btn btn-warning btn-large" })
+</div>
